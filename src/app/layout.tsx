@@ -1,4 +1,5 @@
-import './globals.css'
+import '../styles/globals.css'
+
 import { BRAND } from '@/lib/brand'
 import Link from 'next/link'
 
