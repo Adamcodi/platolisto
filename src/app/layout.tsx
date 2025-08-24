@@ -1,32 +1,39 @@
-export default function HomePage() {
-  return (
-    <section className="grid md:grid-cols-2 gap-10 items-start">
-      <div className="space-y-6">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-          Come bien, gasta menos y cuenta calorías con una foto.
-        </h1>
-        <p className="text-lg text-slate-600">
-          {`PlatoListo te propone el menú semanal, ordena la lista por pasillos y calcula calorías con una foto.`}
-        </p>
-        <div className="flex gap-3">
-          <a href="/dashboard" className="btn btn-primary">Generar mi primer menú</a>
-          <a href="/pricing" className="btn btn-ghost">Ver precios</a>
-        </div>
-      </div>
+import '../styles/globals.css';
 
-      <div className="card p-6">
-        <h2 className="font-semibold mb-2">Menú de ejemplo (7 días)</h2>
-        <ul className="list-decimal list-inside space-y-1 text-sm text-slate-700">
-          <li>Ensalada completa · 10′</li>
-          <li>Pollo al horno con patatas · 40′</li>
-          <li>Tosta de atún · 5′</li>
-          <li>Pasta con pollo y tomate · 20′</li>
-          <li>Lentejas rápidas · 25′</li>
-          <li>Tortilla francesa con ensalada · 10′</li>
-          <li>Crema de calabaza · 30′</li>
-        </ul>
-        <div className="mt-4 text-sm text-slate-500">Coste semanal ≈ 10 € · Recetas demo: 13</div>
-      </div>
-    </section>
-  )
+export const metadata = {
+  title: 'PlatoListo — Menú + compra + calorías',
+  description: 'Menú semanal + lista por pasillos + calorías por foto',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="es">
+      <head>
+        {/* Fuente Inter sin complicaciones */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+      </head>
+      <body className="bg-slate-50 text-slate-900">
+        <header className="border-b bg-white/90 backdrop-blur">
+          <div className="container flex items-center justify-between py-4">
+            <a href="/" className="flex items-center gap-2">
+              <img src="/logo.svg" alt="logo" width={28} height={28} />
+              <span className="font-semibold tracking-tight">PlatoListo</span>
+            </a>
+            <nav className="flex items-center gap-3 text-sm">
+              <a href="/pricing" className="btn btn-ghost">Precios</a>
+              <a href="/dashboard" className="btn btn-primary">Abrir app</a>
+            </nav>
+          </div>
+        </header>
+
+        <main className="container py-10">{children}</main>
+
+        <footer className="container py-10 text-sm text-slate-500">
+          © {new Date().getFullYear()} PlatoListo. Beta.
+        </footer>
+      </body>
+    </html>
+  );
 }
