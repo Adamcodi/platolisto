@@ -1,42 +1,32 @@
-import '../styles/globals.css'
-
-import { BRAND } from '@/lib/brand'
-import Link from 'next/link'
-
-export const metadata = {
-  title: `${BRAND.name} — ${BRAND.slogan}`,
-  description: 'Menú semanal + compra más barata + calorías por foto'
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function HomePage() {
   return (
-    <html lang="es">
-      <body>
-        <header className="container pt-6 pb-3">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.svg" alt="logo" width={28} height={28} />
-              <span className="font-semibold text-xl tracking-tight">{BRAND.name}</span>
-              <span className="pill hidden md:inline">Beta</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-2">
-              <Link className="btn btn-ghost" href="/pricing">Precios</Link>
-              <Link className="btn btn-primary" href="/dashboard">Abrir app</Link>
-            </nav>
-            <Link className="md:hidden btn btn-primary" href="/dashboard">Abrir app</Link>
-          </div>
-        </header>
-        <main className="container pb-16">{children}</main>
-        <footer className="border-t border-slate-200 bg-white/60 backdrop-blur">
-          <div className="container py-4 text-xs text-slate-600 flex items-center justify-between">
-            <div className="flex items-center gap-2"><img src="/logo.svg" width={18} height={18} /><span>© {new Date().getFullYear()} {BRAND.name}. Beta.</span></div>
-            <div className="flex items-center gap-3">
-              <Link href="/legal/privacy">Privacidad</Link>
-              <Link href="/legal/terms">Términos</Link>
-            </div>
-          </div>
-        </footer>
-      </body>
-    </html>
+    <section className="grid md:grid-cols-2 gap-10 items-start">
+      <div className="space-y-6">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+          Come bien, gasta menos y cuenta calorías con una foto.
+        </h1>
+        <p className="text-lg text-slate-600">
+          {`PlatoListo te propone el menú semanal, ordena la lista por pasillos y calcula calorías con una foto.`}
+        </p>
+        <div className="flex gap-3">
+          <a href="/dashboard" className="btn btn-primary">Generar mi primer menú</a>
+          <a href="/pricing" className="btn btn-ghost">Ver precios</a>
+        </div>
+      </div>
+
+      <div className="card p-6">
+        <h2 className="font-semibold mb-2">Menú de ejemplo (7 días)</h2>
+        <ul className="list-decimal list-inside space-y-1 text-sm text-slate-700">
+          <li>Ensalada completa · 10′</li>
+          <li>Pollo al horno con patatas · 40′</li>
+          <li>Tosta de atún · 5′</li>
+          <li>Pasta con pollo y tomate · 20′</li>
+          <li>Lentejas rápidas · 25′</li>
+          <li>Tortilla francesa con ensalada · 10′</li>
+          <li>Crema de calabaza · 30′</li>
+        </ul>
+        <div className="mt-4 text-sm text-slate-500">Coste semanal ≈ 10 € · Recetas demo: 13</div>
+      </div>
+    </section>
   )
 }
